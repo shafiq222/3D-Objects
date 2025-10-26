@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Today Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 40px;
+      background: #f2f2f2;
+    }
+    .calendar {
+      display: inline-block;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #333;
+    }
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: center;
+      border-radius: 4px;
+    }
+    th {
+      background: #0078D7;
+      color: white;
+    }
+    td.today {
+      background: #FFB300;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <h1 id="monthYear"></h1>
+    <table id="calendarTable"></table>
+  </div>
+
+  <script>
+    const date = new Date();
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    document.getElementById("monthYear").textContent = `${monthNames[month]} ${year}`;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const table = document.getElementById("calendarTable");
+
+    let html = "<tr>";
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    for (let d of days) html += `<th>${d}</th>`;
+    html += "</tr><tr>";
+
+    for (let i = 0; i < firstDay; i++) html += "<td></td>";
+    for (let day = 1; day <= daysInMonth; day++) {
+      const currentDay = new Date(year, month, day);
+      if (day === date.getDate()) {
+        html += `<td class="today">${day}</td>`;
+      } else {
+        html += `<td>${day}</td>`;
+      }
+      if (currentDay.getDay() === 6) html += "</tr><tr>";
+    }
+    html += "</tr>";
+    table.innerHTML = html;
+  </script>
+</body>
+</html>
