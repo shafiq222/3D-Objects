@@ -34,16 +34,58 @@
             background-color: yellowgreen;
             color: whitesmoke;
         }
+
+         h1{
+            text-align: center;
+            color: #666766;
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow: 2px 2px 5px black;
+        }
     </style>
 </head>
 <body>
-    This is home
+    <h1>HOME</h1>
      <div class="topnav">
         <a class="active" href="home.html">Home</a>
-        <a href="menu.html">Main sports</a>
-        <a href="about_us.html">Location</a>
+        <a href="menu.html">menu</a>
+        <a href="about_us.html">about_us</a>
         <a href="contact.html">Call us</a>
         <a href="gallery.html">Gallery</a>
     </div>
+
+    <section>
+        <center>
+            <img class="myslides"
+                src="https://img.freepik.com/free-photo/wooden-table-looking-out-blurred-empty-bar_23-2147701321.jpg?semt=ais_hybrid&w=740&q=80"
+                style="height: 500px; width: 800px;">
+    
+            <img class="myslides" src="https://i.pinimg.com/736x/c7/c5/50/c7c55063064109affc62c6230816ae70.jpg"
+                style="height: 500px; width: 800px;">
+    
+            <img class="myslides"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ0EqHI6h5QgFTXGG_1i2FADG1xulRbVtecA&s"
+                style="height: 500px; width: 800px;">
+        </center>
+    </section>
+    <script>
+        var myindex = 0;
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("myslides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none"
+            }
+
+            myindex++;
+            if (myindex > x.length) {
+                myindex = 1
+            }
+
+            x[myindex - 1].style.display = "block";
+            setTimeout(carousel, 3000);
+
+        }
+        carousel()
+    </script>
 </body>
 </html>
