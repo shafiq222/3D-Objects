@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Message and Loop</title>
+</head>
+
+<body>
+
+    <h2>Message and Loop Example</h2>
+
+    <button onclick="showMessage()">Click Me</button>
+
+    <p id="output"></p>
+
+    <script>
+        function showMessage() {
+            let text = "";
+
+            // loop
+            for (let i = 1; i <= 5; i++) {
+                text += "This is message number " + i + "<br>";
+            }
+
+            document.getElementById("output").innerHTML = text;
+        }
+    </script>
+
+</body>
+
+</html>
